@@ -5,7 +5,8 @@ html
     title KusoDevBattle
     link href="/starwars.css" rel="stylesheet" type="text/css"
     style
-      | #titlecontent:after {
+      | .hidden { display: none !important; }
+        #layer-rainbow {
           position: absolute;
           display: block;
           content: "";
@@ -22,14 +23,17 @@ html
                                             rgba(  0,   0, 255, 0.5) 65%,
                                             rgba(255,   0, 255, 0.5) 80%,
                                             rgba(255,   0,   0, 0.5) 100%);
+        }
         @keyframes rainbow {
             0%   { background-position:    0 0 }
           100%   { background-position: 100% 0 }
         }
   body
+    input[type="checkbox" name="rainbow" onchange="var rainbow = document.getElementById('layer-rainbow'); if (this.checked) { rainbow.className = ''; } else { rainbow.className = 'hidden'; }"]
     #titles
       #titlecontent
         img#twitter[src="/cache/#{@id}"]
+        #layer-rainbow.hidden
     #car[style="position: absolute; margin: 0 auto; bottom: 0; left: 30%;"]
       img[src="/car_back.png" width="50%" height="50%"]
     javascript:
