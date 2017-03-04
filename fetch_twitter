@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "capybara/poltergeist"
+Bundler.require
+
+Capybara.javascript_driver = :poltergeist
+session = Capybara::Session.new(:poltergeist)
+
+session.visit "https://twitter.com/onk"
+
+# 3 回スクロールしてから screenshot 取る
+3.times do
+  session.execute_script <<-JS
+  setTimeout(function() {
+    window.document.body.scrollTop = document.body.scrollHeight;
+  }, 0);
+  JS
+  sleep 0.3 # 無限スクロールが発火するのを雑に待つ
+end
+p session.save_screenshot(nil, full: true)
