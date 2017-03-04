@@ -4,4 +4,7 @@ html
     meta[http-equiv="Content-Type" content="text/html; charset=UTF-8"]
     title KusoDevBattle
   body
-    | あああ
+    | twitter の id を入力してね
+    form[action="/fetch" method="post"]
+      input[name="screen_name" type="text"]
+      input[type="submit"]
