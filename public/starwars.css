@@ -6,6 +6,10 @@ body, html
   background-color: #000;
   overflow: hidden;
 }
+body.medetai {
+  background: url(back.jpg) no-repeat;
+  background-size: 100%;
+}
 
 /* the interesting 3D scrolling stuff */
 #titles

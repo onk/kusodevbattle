@@ -28,8 +28,10 @@ html
             0%   { background-position:    0 0 }
           100%   { background-position: 100% 0 }
         }
-  body
+  body#body
     input[type="checkbox" name="rainbow" onchange="var rainbow = document.getElementById('layer-rainbow'); if (this.checked) { rainbow.className = ''; } else { rainbow.className = 'hidden'; }"]
+    input[type="checkbox" name="medetai" onchange="var body = document.getElementById('body'); if (this.checked) { body.className = 'medetai'; } else { body.className = ''; }"]
+
     #titles
       #titlecontent
         img#twitter[src="/cache/#{@id}"]
