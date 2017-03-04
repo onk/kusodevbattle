@@ -30,5 +30,30 @@ html
     #titles
       #titlecontent
         img#twitter[src="/cache/#{@id}"]
-    #car[style="position: absolute; margin: 0 auto; bottom: 0; left: 500px"]
+    #car[style="position: absolute; margin: 0 auto; bottom: 0; left: 30%;"]
       img[src="/car_back.png" width="50%" height="50%"]
+    javascript:
+      var car = document.getElementById("car");
+      var accel = 0;
+
+      window.addEventListener("deviceorientation", function(e){
+          var beta;
+          if(e.beta > 90) {
+            beta = 180 - e.beta;
+          } else if(e.beta < -90) {
+            beta = - 180 - e.beta;
+          } else {
+            beta = e.beta;
+          }
+          accel = beta * 0.01;
+      }, true);
+      setInterval(function() {
+        var left = parseFloat(car.style.left);
+        left += accel;
+        if (left < 15) {
+          left = 15;
+        } else if (left > 60) {
+          left = 60;
+        }
+        car.style.left = left + "%";
+      }, 10);
