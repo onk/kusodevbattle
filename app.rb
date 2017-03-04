@@ -8,6 +8,7 @@ class App < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   configure :development do
     register Sinatra::Reloader
+    also_reload "models/**/*"
   end
 
   get "/" do
